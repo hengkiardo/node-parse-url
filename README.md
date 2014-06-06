@@ -1,6 +1,8 @@
 node-parse-url
 ==============
 
+[![npm](https://img.shields.io/npm/v/node-parse-url.svg)](https://www.npmjs.org/package/node-parse-url)
+
 Take a URL string, and return an object. Extend from native url module
 
 #url-expand
