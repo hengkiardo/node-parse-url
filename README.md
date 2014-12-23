@@ -5,36 +5,36 @@ node-parse-url
 
 Take a URL string, and return an object. Extend from native url module
 
-#url-expand
-
-Simple and efficient URL expander.
-
 ## Installation
 
 Global
 ```
-npm install url-expand
+npm install node-parse-url
 ```
 
 ## Usage
 
 ```js
+
 var parseUrl = require('node-parse-url');
 
-urlExpand('http://bit.ly/1fiiaIg', function (err, url) {
-  console.log(url);
-  // output
-  // {
-  //   protocol: 'https:',
-  //   host: 'github',
-  //   port: null,
-  //   hostname: 'github.com',
-  //   path: '/aredo',
-  //   subdomain: null,
-  //   tld: 'com',
-  //   domain: 'github.com'
-  // }
-});
+var url = parseUrl('https://github.com/aredo');
+
+console.log(url);
+
+// output
+
+// { 
+//   protocol: 'https:',
+//   host: 'github',
+//   port: null,
+//   hostname: 'github.com',
+//   path: '/aredo',
+//   subdomain: null,
+//   tld: 'com',
+//   domain: 'github.com' 
+// }
+
 ```
 
 ## License
