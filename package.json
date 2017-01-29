@@ -1,15 +1,20 @@
 {
   "name": "node-parse-url",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Take a URL string, and return an object. extend from native url module",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "standard": "./node_modules/.bin/standard"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:aredo/node-parse-url.git"
   },
+  "precommit": [
+    "standard",
+    "test"
+  ],
   "keywords": [
     "url",
     "domain",
@@ -17,10 +22,24 @@
     "parse",
     "link"
   ],
+  "standard": {
+    "ignore": [
+      "test.js",
+      "/test/*.js",
+      "**/*.opts"
+    ]
+  },
   "author": "Hengki Sihombing <hengki.sihombing@gmail.com> (http://hengkiardo.com/)",
   "license": "MTI",
   "bugs": {
     "url": "https://github.com/aredo/node-parse-url/issues"
   },
-  "homepage": "https://github.com/aredo/node-parse-url"
+  "homepage": "https://github.com/aredo/node-parse-url",
+  "dependencies": {
+    "tldjs": "^1.7.0"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2",
+    "standard": "^8.6.0"
+  }
 }
