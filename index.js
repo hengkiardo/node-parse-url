@@ -3,20 +3,23 @@
 
 const Url = require('url')
 const tldjs = require('tldjs')
+const memoize = require('fast-memoize')
 
-function addhttp (url) {
+const addhttp = (url) => {
   if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
     url = 'http://' + url
   }
   return url
 }
 
-module.exports = (url) => {
+const addHttpMemoize = memoize(addhttp)
+
+const parseUrl = (url) => {
   if (typeof url !== 'string') {
     url = ''
   }
 
-  const makeAsUrl = addhttp(url)
+  const makeAsUrl = addHttpMemoize(url)
   const parsedUrl = Url.parse(makeAsUrl)
 
   if (!parsedUrl.protocol) parsedUrl.protocol = 'http'
@@ -32,3 +35,5 @@ module.exports = (url) => {
   delete parsedUrl.pathname
   return parsedUrl
 }
+
+module.exports = memoize(parseUrl)
