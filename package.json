@@ -37,10 +37,10 @@
   "homepage": "https://github.com/aredo/node-parse-url",
   "dependencies": {
     "fast-memoize": "^2.1.1",
-    "tldjs": "^1.7.0"
+    "tldjs": "^2.2.0"
   },
   "devDependencies": {
     "pre-commit": "^1.2.2",
-    "standard": "^8.6.0"
+    "standard": "^10.0.3"
   }
 }

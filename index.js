@@ -6,7 +6,9 @@ const tldjs = require('tldjs')
 const memoize = require('fast-memoize')
 
 const addhttp = (url) => {
-  if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+  let pattern = /^((http|https|ftp):\/\/)/
+
+  if (!pattern.test(url)) {
     url = 'http://' + url
   }
   return url
@@ -25,6 +27,13 @@ const parseUrl = (url) => {
   if (!parsedUrl.protocol) parsedUrl.protocol = 'http'
 
   parsedUrl.domain = tldjs.getDomain(parsedUrl.hostname || parsedUrl.host)
+
+  if (!parsedUrl.domain && parsedUrl.path && parsedUrl.path.includes('//')) {
+    let pathParam = parsedUrl.path.split('.')
+    parsedUrl.domain = `${pathParam[1]}.${pathParam[0].replace('//', '')}`
+  } else {
+    parsedUrl.domain = parsedUrl.hostname || parsedUrl.host
+  }
 
   delete parsedUrl.auth
   delete parsedUrl.search
