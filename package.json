@@ -1,6 +1,6 @@
 {
   "name": "node-parse-url",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Take a URL string, and return an object. extend from native url module",
   "main": "index.js",
   "scripts": {
