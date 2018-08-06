@@ -3,6 +3,7 @@
 
 const Url = require('url')
 const tldjs = require('tldjs')
+const parseDomain = require('parse-domain')
 const memoize = require('fast-memoize')
 
 const addhttp = (url) => {
@@ -34,6 +35,10 @@ const parseUrl = (url) => {
   } else {
     parsedUrl.domain = parsedUrl.hostname || parsedUrl.host
   }
+
+  const getBaseDomain = parseDomain(parsedUrl.domain)
+
+  if (getBaseDomain && getBaseDomain.domain) parsedUrl.host = `${getBaseDomain.domain}.${getBaseDomain.tld}`
 
   delete parsedUrl.auth
   delete parsedUrl.search
