@@ -38,7 +38,7 @@ const parseUrl = (url) => {
 
   const getBaseDomain = parseDomain(parsedUrl.domain)
 
-  if (getBaseDomain && getBaseDomain.domain) parsedUrl.host = `${getBaseDomain.domain}.${getBaseDomain.tld}`
+  if (getBaseDomain && getBaseDomain.domain) parsedUrl.host = `${getBaseDomain.domain}`
 
   delete parsedUrl.auth
   delete parsedUrl.search
